@@ -12,10 +12,10 @@ check: selfcheck lint
 build: check
 	@poetry build
 
-test:
-	poetry run pytest --cov=page_loader --cov-report xml tests/
-
 run:
 	poetry run python manage.py runserver
+
+requirements:
+	poetry export -f requirements.txt -o requirements.txt
 
 .PHONY: install test lint selfcheck check build publish
