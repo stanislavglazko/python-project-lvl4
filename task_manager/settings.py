@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'task_manager',
     'bootstrap4',
     'users.apps.UsersConfig',
+    'taggit',
+    'tasks',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,6 @@ ROLLBAR = {
     'branch': 'master',
     'root': BASE_DIR,
 }
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'

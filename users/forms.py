@@ -1,4 +1,4 @@
-from django import forms
+from django import forms  # noqa: F401
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 
