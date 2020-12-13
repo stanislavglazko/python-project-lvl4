@@ -7,7 +7,9 @@
     <div class="col">
 {% if user.is_authenticated %}
   Hello, {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log out</a></p>
+  <p><a href="{% url 'tasks' %}">Let's work!</a></p>
+  Or not?
+  <p><a href="{% url 'logout' %}">Go home</a></p>
 {% else %}
   <p>Who are you?</p>
   <a href="{% url 'login' %}">Log in</a> |

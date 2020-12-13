@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}New task{% endblock %}
+
+{% block content %}
+<form method="post">
+{% csrf_token %}
+    {% if form.errors %} {{ form.errors }} {% endif %}
+    <div class="row pt-5">
+        <div class="col-5">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name of the task">
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <input type="text" class="form-control" name="tags" id="tags" placeholder="Enter tags separated by comma">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" placeholder="What shall we do?" rows="7"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="creator">Creator</label>
+                <select class="form-control" name="creator" id="creator">
+                  {% for creator in form.creator %}
+                      {{ creator }}
+                  {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="assigned_to">Assigned to</label>
+                <select class="form-control" name="assigned_to" id="assigned_to">
+                  {% for assigned_to in form.assigned_to %}
+                      {{ assigned_to }}
+                  {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" name="status" id="status">
+                    {% for status in form.status %}
+                        {{ status }}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button  class="btn btn-dark" type='submit'>Save</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

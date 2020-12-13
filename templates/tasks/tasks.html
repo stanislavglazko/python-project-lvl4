@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="row text-center pt-5">
+    <div class="col">
+        Hello, {{ user.username }}!<br>
+        Let's work!<br>
+        {{ list_of_tasks }}
+    </div>
+</div>
+{% else %}
+<div class="row text-center pt-5">
+    <div class="col">
+        <p>Who are you?</p>
+        <a href="{% url 'login' %}">Log in</a> |
+        <a href="{% url 'signup' %}">Sign up</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

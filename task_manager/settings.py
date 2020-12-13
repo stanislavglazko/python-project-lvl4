@@ -137,8 +137,8 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'tasks'
+LOGOUT_REDIRECT_URL = 'tasks'
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
