@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Update the status{% endblock %}
+
+{% block content %}
+<form method="post" class="form-inline justify-content-center">
+    {% csrf_token %}
+    <div class="row pt-5">
+        <div class="col-4 form-froup">
+            <label for="title" class="sr-only">Update the status</label>
+            <input type="text" readonly class="form-control-plaintext" id="title" value="Update the status">
+        </div>
+        <div class="col-6 form-group">
+          <label for="name" class="sr-only">New name of the status</label>
+          <input type="text" class="form-control" name="name" id="name" placeholder="New name">
+        </div>
+        <div class="col-2">
+          <button  class="btn btn-dark" type='submit'>Save</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

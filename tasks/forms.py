@@ -1,10 +1,10 @@
 from django import forms
-from .models import Task
+from .models import Task, TaskStatus
 
 
 class TaskForm(forms.ModelForm):
 
-    class Meta(forms.ModelForm):
+    class Meta:
         model = Task
         fields = ('name',
                   'description',
@@ -12,3 +12,10 @@ class TaskForm(forms.ModelForm):
                   'creator',
                   'assigned_to',
                   'tags')
+
+
+class TaskStatusForm(forms.ModelForm):
+
+    class Meta:
+        model = TaskStatus
+        fields = ('name', )

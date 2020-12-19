@@ -15,7 +15,7 @@ class Task(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True, max_length=10000)
     status = models.ForeignKey(TaskStatus, on_delete=models.CASCADE,
-                               related_name='status')
+                               related_name='status', default=1)
     creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE,
                                 related_name='creator')
     assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE,
