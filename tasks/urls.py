@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ListOfTasks, NewTask, NewStatus
+from .views import NewTask, NewStatus
 from .views import ListOfStatuses, UpdateStatus, DeleteStatus
 from .views import tasklist, NewTag
 # from django.views.generic.base import TemplateView
