@@ -15,8 +15,12 @@
         </div>
         <div class="col-7">
             <div class="form-group">
-                <label for="tags">Tags</label>
-                <input type="text" class="form-control" name="tags" id="tags" placeholder="Enter tags separated by comma">
+                <label for="tags">Tag</label>
+                <select class="form-control" name="tags" id="tags">
+                  {% for tag in form.tags %}
+                      {{ tag }}
+                  {% endfor %}
+                </select>
             </div>
         </div>
     </div>

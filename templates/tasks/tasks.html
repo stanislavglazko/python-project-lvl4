@@ -7,9 +7,99 @@
 <div class="row text-center pt-5">
     <div class="col">
         Hello, {{ user.username }}!<br>
-        Let's work!<br>
-        {{ list_of_tasks }}
+        Let's work!
     </div>
+</div>
+<form method="get">
+    <div class="row pt-5">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="creator">Creator</label>
+                <select class="form-control" name="creator" id="creator">
+                  {% for creator in filter.form.creator %}
+                      {{ creator }}
+                  {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="assigned_to">Assigned to</label>
+                <select class="form-control" name="assigned_to" id="assigned_to">
+                  {% for assigned_to in filter.form.assigned_to %}
+                      {{ assigned_to }}
+                  {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" name="status" id="status">
+                    {% for status in filter.form.status %}
+                        {{ status }}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="tags">Tag</label>
+                <select multiple  class="form-control" name="tags" id="tags">
+                    {% for tag in filter.form.tags %}
+                        {{ tag }}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button  class="btn btn-dark" type='submit'>Show</button>
+        </div>
+    </div>
+</form>
+<div class="row pt-5">
+    <div class="col-1">
+          Name
+      </div>
+      <div class="col-4">
+          Description
+      </div>
+      <div class="col-2">
+          Creator
+      </div>
+      <div class="col-2">
+          Assigned_to
+      </div>
+      <div class="col-1">
+         Status
+      </div>
+      <div class="col-2">
+          Tags
+      </div>
+</div>
+<div class="row pt-3">
+    {% for obj in filter.qs %}
+      <div class="col-1">
+          {{ obj.name }}
+      </div>
+      <div class="col-4">
+          {{ obj.description }}
+      </div>
+      <div class="col-2">
+          {{ obj.creator }}
+      </div>
+      <div class="col-2">
+          {{ obj.assigned_to }}
+      </div>
+      <div class="col-1">
+          {{ obj.status }}
+      </div>
+      <div class="col-2">
+          {% for tag in obj.tags.all %} {{ tag }} {% endfor %} <br />
+      </div>
+    {% endfor %}
 </div>
 {% else %}
 <div class="row text-center pt-5">

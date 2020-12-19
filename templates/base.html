@@ -37,6 +37,7 @@
                     {% if user.is_authenticated %}
                       <li><a class="nav-link {% if request.resolver_match.url_name == 'statuses' %}active{% endif %}" href="{% url 'statuses' %}">Statuses</a></li>
                       <li><a class="nav-link {% if request.resolver_match.url_name == 'new_status' %}active{% endif %}" href="{% url 'new_status' %}">New status</a></li>
+                      <li><a class="nav-link {% if request.resolver_match.url_name == 'new_tag' %}active{% endif %}" href="{% url 'new_tag' %}">New tag</a></li>
                     {% else %}
                       <li><a class="nav-link {% if request.resolver_match.url_name == 'signup' %}active{% endif %}" href="{% url 'signup' %}">Sign up</a></li>
                     {% endif %}

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'taggit',
     'tasks',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
