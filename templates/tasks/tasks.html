@@ -45,6 +45,7 @@
             <div class="form-group">
                 <label for="tags">Tags</label>
                 <select class="form-control" name="tags" id="tags">
+                    <option selected>All tags</option>
                     {% for tag in filter.form.tags %}
                         {{ tag }}
                     {% endfor %}
