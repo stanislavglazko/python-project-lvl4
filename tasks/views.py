@@ -40,7 +40,7 @@ class NewStatus(LoginRequiredMixin, CreateView):
     model = TaskStatus
     template_name = 'tasks/new_status.html'
     form_class = TaskStatusForm
-    success_url = reverse_lazy('new_task')
+    success_url = reverse_lazy('statuses')
 
 
 class ListOfStatuses(LoginRequiredMixin, ListView):
