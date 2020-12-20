@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'task_manager',
     'bootstrap4',
     'users.apps.UsersConfig',
-    'taggit',
     'tasks',
     'django_filters',
 ]

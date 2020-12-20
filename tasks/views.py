@@ -1,4 +1,4 @@
-from django.shortcuts import render  # noqa: F401
+from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -20,6 +20,19 @@ class NewTask(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'tasks/new_task.html'
     form_class = TaskForm
+    success_url = reverse_lazy('tasks')
+
+
+class UpdateTask(LoginRequiredMixin, UpdateView):
+    model = Task
+    template_name = 'tasks/update_task.html'
+    success_url = reverse_lazy('tasks')
+    form_class = TaskForm
+
+
+class DeleteTask(LoginRequiredMixin, DeleteView):
+    model = Task
+    template_name = 'tasks/delete_task.html'
     success_url = reverse_lazy('tasks')
 
 

@@ -5,10 +5,9 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="row text-center pt-5">
-    <div class="col">
-        Hello, {{ user.username }}!<br>
-        Let's work!
-    </div>
+    <h5 class="col">
+        Hello, {{ user.username }}! Let's work!
+    </h5>
 </div>
 <form method="get">
     <div class="row pt-5">
@@ -44,8 +43,8 @@
         </div>
         <div class="col-3">
             <div class="form-group">
-                <label for="tags">Tag</label>
-                <select multiple  class="form-control" name="tags" id="tags">
+                <label for="tags">Tags</label>
+                <select class="form-control" name="tags" id="tags">
                     {% for tag in filter.form.tags %}
                         {{ tag }}
                     {% endfor %}
@@ -56,51 +55,35 @@
     <div class="row">
         <div class="col">
             <button  class="btn btn-dark" type='submit'>Show</button>
+            <a href="{% url 'tasks' %}" class="btn btn-dark">Reset</a>
+            <a href="{% url 'tasks' %}?assigned_to={{request.user.pk}}" class="btn btn-dark">What shall I do?</a>
         </div>
     </div>
 </form>
-<div class="row pt-5">
-    <div class="col-1">
-          Name
-      </div>
-      <div class="col-4">
-          Description
-      </div>
-      <div class="col-2">
-          Creator
-      </div>
-      <div class="col-2">
-          Assigned_to
-      </div>
-      <div class="col-1">
-         Status
-      </div>
-      <div class="col-2">
-          Tags
-      </div>
-</div>
-<div class="row pt-3">
+<div class="row justify-content-center pt-5">
     {% for obj in filter.qs %}
-      <div class="col-1">
-          {{ obj.name }}
+    <div class="col-6 pb-3">
+      <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ obj.name }}</h5>
+            <p class="card-text">
+                {{ obj.description }}
+            </p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ obj.creator }} to {{ obj.assigned_to }}</li>
+            <li class="list-group-item">Status: {{ obj.status }}</li>
+            <li class="list-group-item">Tags: {% for tag in obj.tags.all %} {{ tag }} {% endfor %}</li>
+        </ul>
+        <div class="card-body">
+           <a href="{% url 'update_task' obj.id %}" class="btn btn-dark btn-sm">Update</a>
+           <a href="{% url 'delete_task' obj.id %}" class="btn btn-dark btn-sm">Delete</a>
+        </div>
       </div>
-      <div class="col-4">
-          {{ obj.description }}
-      </div>
-      <div class="col-2">
-          {{ obj.creator }}
-      </div>
-      <div class="col-2">
-          {{ obj.assigned_to }}
-      </div>
-      <div class="col-1">
-          {{ obj.status }}
-      </div>
-      <div class="col-2">
-          {% for tag in obj.tags.all %} {{ tag }} {% endfor %} <br />
-      </div>
+    </div>
     {% endfor %}
 </div>
+
 {% else %}
 <div class="row text-center pt-5">
     <div class="col">

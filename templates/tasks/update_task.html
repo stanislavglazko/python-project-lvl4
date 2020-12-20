@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}New task{% endblock %}
+{% block title %}Update task{% endblock %}
 
 {% block content %}
 <form method="post">
@@ -10,7 +10,7 @@
         <div class="col">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Name of the task">
+                <input type="text" class="form-control" name="name" id="name" value="{{ form.name.value }}">
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="col-9">
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" name="description" id="description" placeholder="What shall we do?" rows="7"></textarea>
+                <textarea class="form-control" name="description" id="description" rows="7">{{ form.description.value }}</textarea>
             </div>
         </div>
         <div class="col-3">
@@ -67,6 +67,7 @@
     <div class="row">
         <div class="col">
             <button  class="btn btn-dark" type='submit'>Save</button>
+            <a href="{% url 'tasks' %}" class="btn btn-dark">Back</a>
         </div>
     </div>
 </form>
