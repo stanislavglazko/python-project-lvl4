@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from django.urls import path, include
 # from django.views.generic.base import TemplateView
-from tasks.views import ListOfTasks
+# from tasks.views import ListOfTasks
 
 urlpatterns = [
     path('', RedirectView.as_view(url='tasks/')),
