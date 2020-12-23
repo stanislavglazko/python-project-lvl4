@@ -17,7 +17,6 @@ run:
 
 test:
 	poetry run coverage run --source='.'  manage.py test
-	poetry run coverage report
 	poetry run coverage xml
 
 requirements:
