@@ -18,6 +18,7 @@ run:
 test:
 	poetry run coverage run manage.py test
 	poetry run coverage report
+	poetry run coverage xml
 
 requirements:
 	poetry export -f requirements.txt -o requirements.txt
