@@ -16,7 +16,7 @@ run:
 	poetry run python manage.py runserver
 
 test:
-	poetry run coverage run manage.py test
+	poetry run python manage.py test
 
 requirements:
 	poetry export -f requirements.txt -o requirements.txt
