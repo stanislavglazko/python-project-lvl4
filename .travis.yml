@@ -18,7 +18,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - - export SECRET_KEY=MY_SECRET_KEY 
+  - export SECRET_KEY=MY_SECRET_KEY 
   - make check
   - make test
 
