@@ -16,7 +16,7 @@ run:
 	poetry run python manage.py runserver
 
 test:
-	poetry run coverage run --source='.'  manage.py test
+	poetry run coverage run manage.py test
 	poetry run coverage xml
 
 requirements:
