@@ -54,8 +54,8 @@ class TaskTest(TestCase):
         task.name = 'new_name'
         name = task.__str__()
         self.assertEquals(name, 'new_name')
-        task.delete()
-        self.assertEqual(Task.objects.count(), 0)
         assert task.description == 'Faster!'
         task.description = 'blablabla'
         assert task.description == 'blablabla'
+        task.delete()
+        self.assertEqual(Task.objects.count(), 0)
