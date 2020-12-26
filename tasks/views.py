@@ -9,13 +9,6 @@ from .filters import TaskFilter
 # Create your views here.
 
 
-class ListOfTasks(ListView):
-    model = Task
-    template_name = 'tasks/tasks.html'
-    context_object_name = 'tasks'
-    form_class = TaskForm
-
-
 class NewTask(LoginRequiredMixin, CreateView):
     model = Task
     template_name = 'tasks/new_task.html'
