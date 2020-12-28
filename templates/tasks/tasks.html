@@ -11,7 +11,7 @@
 </div>
 <form method="get">
     <div class="row pt-5">
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <div class="form-group">
                 <label for="creator">Creator</label>
                 <select class="form-control" name="creator" id="creator">
@@ -21,7 +21,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <div class="form-group">
                 <label for="assigned_to">Assigned to</label>
                 <select class="form-control" name="assigned_to" id="assigned_to">
@@ -31,7 +31,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <div class="form-group">
                 <label for="status">Status</label>
                 <select class="form-control" name="status" id="status">
@@ -41,7 +41,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
             <div class="form-group">
                 <label for="tags">Tags</label>
                 <select class="form-control" name="tags" id="tags">
@@ -63,7 +63,7 @@
 </form>
 <div class="row justify-content-center pt-5">
     {% for obj in filter.qs %}
-    <div class="col-6 pb-3">
+    <div class="col-12 col-md-6 pb-3">
       <div class="card">
         <div class="card-body">
             <h5 class="card-title">{{ obj.name }}</h5>

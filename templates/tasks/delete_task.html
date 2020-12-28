@@ -6,13 +6,13 @@
 <form method="post" class="form-inline justify-content-center">
     {% csrf_token %}
     <div class="row pt-5">
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             Are you sure you want to delete the task: {{ object }}?
         </div>
-        <div class="col-2">
+        <div class="col-6 col-md-2">
           <button  class="btn btn-dark" type='submit'>Delete</button>
         </div>
-        <div class="col-2">
+        <div class="col-6 col-md-2">
           <a class="btn btn-dark" href="{% url 'tasks' %}">No!</a>
         </div>
     </div>
