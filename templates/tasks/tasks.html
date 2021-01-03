@@ -6,7 +6,8 @@
 {% if user.is_authenticated %}
 <div class="row text-center pt-5">
     <h5 class="col">
-        Hello, {{ user.username }}! Let's work!
+        Hello, {{ user.username }}! Let's work!<br>
+        You can find the tasks or create a new one.
     </h5>
 </div>
 <form method="get">
@@ -55,9 +56,14 @@
     </div>
     <div class="row">
         <div class="col">
-            <button  class="btn btn-dark" type='submit'>Show</button>
-            <a href="{% url 'tasks' %}" class="btn btn-dark">Reset</a>
-            <a href="{% url 'tasks' %}?assigned_to={{request.user.pk}}" class="btn btn-dark">What shall I do?</a>
+            <a href="{% url 'tasks' %}?assigned_to={{request.user.pk}}" class="btn btn-dark">Tasks for me</a>
+            <a class="btn btn-dark" href="{% url 'new_task' %}">Create a new task</a>
+        </div>
+        <div class="col text-right">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button  class="btn btn-dark" type='submit'>Apply</button>
+                <a href="{% url 'tasks' %}" class="btn btn-danger">Reset</a>
+            </div>
         </div>
     </div>
 </form>
@@ -72,13 +78,21 @@
             </p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ obj.creator }} to {{ obj.assigned_to }}</li>
+            <li class="list-group-item"> From {{ obj.creator }} to {{ obj.assigned_to }}</li>
             <li class="list-group-item">Status: {{ obj.status }}</li>
-            <li class="list-group-item">Tags: {% for tag in obj.tags.all %} {{ tag }} {% endfor %}</li>
+            <li class="list-group-item">Tags:
+                {% for tag in obj.tags.all %}
+                <span class="badge badge-dark">
+                  {{ tag }}
+                </span>
+                {% endfor %}
+            </li>
         </ul>
         <div class="card-body">
-           <a href="{% url 'update_task' obj.id %}" class="btn btn-dark btn-sm">Update</a>
-           <a href="{% url 'delete_task' obj.id %}" class="btn btn-dark btn-sm">Delete</a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+             <a href="{% url 'update_task' obj.id %}" class="btn btn-dark btn-sm">Update</a>
+             <a href="{% url 'delete_task' obj.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
         </div>
       </div>
     </div>

@@ -15,6 +15,12 @@ class NewTask(LoginRequiredMixin, CreateView):
     form_class = TaskForm
     success_url = reverse_lazy('tasks')
 
+    def get_initial(self):
+        initial = super(NewTask, self).get_initial()
+        initial['creator'] = self.request.user
+        initial['status'] = TaskStatus.objects.first()
+        return initial
+
 
 class UpdateTask(LoginRequiredMixin, UpdateView):
     model = Task
@@ -64,4 +70,23 @@ class NewTag(LoginRequiredMixin, CreateView):
     model = Tag
     template_name = 'tasks/new_tag.html'
     form_class = TagForm
-    success_url = reverse_lazy('new_task')
+    success_url = reverse_lazy('tags')
+
+
+class ListOfTags(LoginRequiredMixin, ListView):
+    model = Tag
+    template_name = 'tasks/tags.html'
+    context_object_name = 'tags'
+
+
+class UpdateTag(LoginRequiredMixin, UpdateView):
+    model = Tag
+    template_name = 'tasks/update_tag.html'
+    success_url = reverse_lazy('tags')
+    form_class = TagForm
+
+
+class DeleteTag(LoginRequiredMixin, DeleteView):
+    model = Tag
+    template_name = 'tasks/delete_tag.html'
+    success_url = reverse_lazy('tags')

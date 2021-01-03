@@ -14,7 +14,7 @@
     <link rel="icon" href="{% static 'favicon.ico' %}">
   </head>
   <body>
-    <div class="container text-monospace">
+    <div class="container">
       <header>
         <div class="row pb-5">
           <div class="col">
@@ -26,16 +26,7 @@
               <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     {% if user.is_authenticated %}
-                      <li><a class="nav-link {% if request.resolver_match.url_name == 'new_task' %}active{% endif %}" href="{% url 'new_task' %}">New task</a></li>
-                    {% else %}
-                      <li><a class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Log in</a></li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                      <li><a class="nav-link {% if request.resolver_match.url_name == 'statuses' %}active{% endif %}" href="{% url 'statuses' %}">Statuses</a></li>
-                      <li><a class="nav-link {% if request.resolver_match.url_name == 'new_status' %}active{% endif %}" href="{% url 'new_status' %}">New status</a></li>
-                      <li><a class="nav-link {% if request.resolver_match.url_name == 'new_tag' %}active{% endif %}" href="{% url 'new_tag' %}">New tag</a></li>
-                    {% else %}
-                      <li><a class="nav-link {% if request.resolver_match.url_name == 'signup' %}active{% endif %}" href="{% url 'signup' %}">Sign up</a></li>
+                      <li><a class="nav-link {% if request.resolver_match.url_name == 'tags' %}active{% endif %}" href="{% url 'tags' %}">List of tags</a></li>
                     {% endif %}
                 </ul>
                     {% if user.is_authenticated %}

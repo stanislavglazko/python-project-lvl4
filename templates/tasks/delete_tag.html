@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Delete the tag{% endblock %}
+
+{% block content %}
+<form method="post" class="form-inline justify-content-center">
+    {% csrf_token %}
+    <div class="row pt-5">
+        <div class="col-12 col-md-8">
+            Are you sure you want to delete the tag: {{ object }}?
+        </div>
+        <div class="col-6 col-md-2">
+          <button  class="btn btn-danger" type='submit'>Delete</button>
+        </div>
+        <div class="col-6 col-md-2">
+          <a class="btn btn-dark" href="{% url 'tags' %}">No!</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

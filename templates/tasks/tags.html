@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+    <div class="row pt-5">
+        <div class="col">
+            <a class="btn btn-dark" href="{% url 'new_tag' %}">Create a new tag</a></li>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col-4">
+            <table class="table table-bordless">
+                <tbody>
+                  {% for tag in tags %}
+                    <tr>
+                        <td>{{ tag.name }}</td>
+                        <td>
+                            <form  action="{% url 'update_tag' tag.id %}" method="get">
+                              {% csrf_token %}
+                              <button  type="submit" class="btn btn-outline-dark btn-sm">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a  href="{% url 'delete_tag' tag.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
